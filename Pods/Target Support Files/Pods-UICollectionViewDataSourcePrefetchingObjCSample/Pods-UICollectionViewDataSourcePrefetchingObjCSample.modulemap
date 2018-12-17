@@ -1,0 +1,6 @@
+module Pods_UICollectionViewDataSourcePrefetchingObjCSample {
+  umbrella header "Pods-UICollectionViewDataSourcePrefetchingObjCSample-umbrella.h"
+
+  export *
+  module * { export * }
+}
