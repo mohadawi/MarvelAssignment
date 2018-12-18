@@ -6,13 +6,18 @@
 //  Copyright © 2016 Mentormate. All rights reserved.
 //
 
+//Mohammad Dawi on 12/18/2018
+
 #import "MainCollectionViewController.h"
 #import "MainCollectionViewCell.h"
 #import "DetailViewController.h"
+#import <CoreData/CoreData.h>
+#import "AppDelegate.h"
 
 
 static CGFloat const CollectionViewCellPadding = 10;
 static NSInteger const NumberOfCellsPerRow = 2;
+static AppDelegate *delegate;
 
 @interface MainCollectionViewController () <UICollectionViewDataSourcePrefetching>
 
@@ -30,8 +35,6 @@ static NSInteger const NumberOfCellsPerRow = 2;
 @property (strong, nonatomic) UIWebView *webview;
 @property (strong, nonatomic) UIImageView *imageView;
 
-
-
 @end
 
 @implementation MainCollectionViewController
@@ -39,7 +42,7 @@ static NSInteger const NumberOfCellsPerRow = 2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     _mutableArrayIds=[NSMutableArray array];
     _mutableArrayNames=[NSMutableArray array];
     _mutableArrayThumbnails=[NSMutableArray array];
@@ -72,21 +75,15 @@ static NSInteger const NumberOfCellsPerRow = 2;
 }
 
 - (void)populateModels2:(NSInteger)count {
-    
     self.downloadImageOperationQueue = [[NSOperationQueue alloc] init];
-
     self.imageURLs = [NSMutableArray array];
     self.operations = [NSMutableDictionary dictionary];
     self.images = [NSMutableDictionary dictionary];
-    
-    
-    //NSURL *catPictureURL = [NSURL URLWithString:urlStr];
     NSString  *urlStr;
     //Simulating initial load of content
     for (NSInteger counter = 0; counter < count; counter++) {
         //Simulating slow download using large images
         urlStr=_mutableArrayThumbnails[counter];
-        //+ "apikey=" + apikey + "&hash=" + hash + "&ts=" + ts
         urlStr = [urlStr stringByAppendingString:@"."];
         urlStr = [urlStr stringByAppendingString:_mutableArrayThumbnailsExt[counter]];
         NSString *imageStringAdress = urlStr;
@@ -98,12 +95,9 @@ static NSInteger const NumberOfCellsPerRow = 2;
 - (void)populateModels:(NSInteger)count {
     
     self.downloadImageOperationQueue = [[NSOperationQueue alloc] init];
-    
     self.imageURLs = [NSMutableArray array];
     self.operations = [NSMutableDictionary dictionary];
     self.images = [NSMutableDictionary dictionary];
-    
-    
     
     //Simulating initial load of content
     for (NSInteger counter = 0; counter < 50; counter++) {
@@ -115,13 +109,52 @@ static NSInteger const NumberOfCellsPerRow = 2;
     }
 }
 
+// check duplicate characters in core data
+- (int) checkDuplicateCharacters:(NSString*)cid{
+        NSManagedObjectContext *managedObjectContext=[delegate managedObjectContext];
+        NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
+        NSError *error = nil;
+        NSArray *results = [managedObjectContext executeFetchRequest:request error:&error];
+        NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+        if ([[mutableFetchResults valueForKey:@"cid"]
+             containsObject:cid]) {
+            //notify duplicates
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    /*
+    for (NSManagedObject *obj in results) {
+        NSArray *keys = [[[obj entity] attributesByName] allKeys];
+        NSDictionary *dictionary = [obj dictionaryWithValuesForKeys:keys];
+    }
+     */
+}
 
+//save new downloaded avatar to core data
+- (void) saveCharacterWithId:(NSString*)cid wiki:(NSString*)wiki name:(NSString*)name image:(NSString*)thumbImgData {
+    //check if character already saved
+    int flag=[self checkDuplicateCharacters:cid];
+    if(flag == 1){
+        return;
+    }
+    NSManagedObjectContext *managedObjectContext=[delegate managedObjectContext];
+    NSManagedObject *character = [NSEntityDescription insertNewObjectForEntityForName:@"Character" inManagedObjectContext:managedObjectContext];
+    [character setValue:cid forKey:@"cid"];
+    [character setValue:name forKey:@"name"];
+    [character setValue:wiki forKey:@"wiki"];
+    [character setValue:thumbImgData forKey:@"image"];
+    NSError *error = nil;
+    if ([managedObjectContext save:&error] == NO) {
+        NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
+    }
+}
 
-
+//get the data from API using the private and public keys + timestap
 -(void) getRequestAPICall:(NSString *)apikey hash:(NSString *)hash ts:(NSString *)ts  {
-    
     NSString  *todosEndpoint=@"https://gateway.marvel.com:443/v1/public/characters?";
-    //+ "apikey=" + apikey + "&hash=" + hash + "&ts=" + ts
     todosEndpoint = [todosEndpoint stringByAppendingString:@"apikey="];
     todosEndpoint = [todosEndpoint stringByAppendingString:apikey];
     todosEndpoint = [todosEndpoint stringByAppendingString:@"&hash="];
@@ -141,7 +174,7 @@ static NSInteger const NumberOfCellsPerRow = 2;
                        JSONObjectWithData:data
                        options:0
                        error:&error];
-          long count;
+          long count=0;
           if([object isKindOfClass:[NSDictionary class]])
           {
               //get all the characters data for eg. their count etc...
@@ -154,44 +187,67 @@ static NSInteger const NumberOfCellsPerRow = 2;
               NSDictionary *thumb;
               NSArray *wiki;
               NSDictionary *url;
+              NSString *imgUrl;
+              int found;
                   for(int i=0; i< count; i++){
+                      found=0;
                       character = characters[i];
                       [_mutableArrayIds addObject:character[@"id"]];
                       [_mutableArrayNames addObject:character[@"name"]];
                       thumb = character[@"thumbnail"];
                       [_mutableArrayThumbnails addObject:thumb[@"path"]];
                       [_mutableArrayThumbnailsExt addObject:thumb[@"extension"]];
+                      imgUrl = [thumb[@"path"] stringByAppendingString:@"."];
+                      imgUrl = [imgUrl stringByAppendingString:thumb[@"extension"]];
+                      
                       wiki = character[@"urls"];
                       for(int i=0; i< wiki.count; i++) {
                           url = wiki[i];
                           if( [url[@"type"]  isEqual: @"wiki"]){
                               [_mutableArrayWikis addObject:url[@"url"]];
+                              found=1;
                           }
+                      }
+                      if(found == 0){
+                          [_mutableArrayWikis addObject:@"http://www.google.com"];
                       }
                   }
           }
-          NSLog(@"contents of newArray: %@", _mutableArrayThumbnails);
-          NSLog(@"contents of newArray: %@", _mutableArrayThumbnailsExt);
+          //NSLog(@"contents of newArray: %@", _mutableArrayThumbnails);
+          //NSLog(@"contents of newArray: %@", _mutableArrayThumbnailsExt);
           [self populateModels2:count];
-          
           dispatch_async(dispatch_get_main_queue(), ^{
+               [self saveCharacters:20];
+               //[self loadLocalCharacters];
                [self.collectionView reloadData];
           });
-          //[self loadThumbNail];
-          //NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-          //NSLog(@"Data received: %@", myString);
       }] resume];
     
+}
+
+// save characters to core data
+-(void) saveCharacters:(NSInteger)count{
+    NSString *imgUrl;
+    NSString *cid;
+    NSString *name;
+    NSString *wiki;
+    for(int i=0;i<count;i++){
+        imgUrl = [[_mutableArrayThumbnails objectAtIndex:i] stringByAppendingString:@"."];
+        imgUrl = [imgUrl stringByAppendingString:[_mutableArrayThumbnailsExt objectAtIndex:i]];
+        cid = [[_mutableArrayIds objectAtIndex:i] stringValue];
+        wiki = [_mutableArrayWikis objectAtIndex:i];
+        name = [_mutableArrayNames objectAtIndex:i];
+        [self saveCharacterWithId:cid wiki:wiki name:name image:imgUrl];
+    }
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     return YES;
 }
 
+/*
 -(void) loadThumbNail{
-    
     //add a webview for wiki
-   
     NSLog(@"contents of newArray: %@", _mutableArrayWikis[0]);
     NSString *wiki = [_mutableArrayWikis objectAtIndex:0];
     NSURL *nsurl=[NSURL URLWithString:wiki];
@@ -226,7 +282,7 @@ static NSInteger const NumberOfCellsPerRow = 2;
     });
     //imageView.image = image
 }
-
+*/
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -259,15 +315,9 @@ static NSInteger const NumberOfCellsPerRow = 2;
 
 
 
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     MainCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    //DetailViewController *secondViewController = [[DetailViewController alloc] init];
-    //secondViewController.detailImage = cell.imageView.image;
-    //[secondViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    //[self presentModalViewController:secondViewController animated:YES];
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DetailViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     NSURL *imageURL = self.imageURLs[indexPath.row];
@@ -338,21 +388,6 @@ static NSInteger const NumberOfCellsPerRow = 2;
             weakSelf.operations[url] = nil;
             return;
         }
-        /*
-        dispatch_async(dispatch_get_global_queue(0,0), ^{
-            NSData * data = [[NSData alloc] initWithContentsOfURL: url];
-            if ( data == nil )
-                return;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // WARNING: is the cell still using the same data by this point??
-                weakSelf.images[url] = [UIImage imageWithData: data];
-                weakSelf.operations[url] = nil;
-                _imageView.image = [UIImage imageWithData: data];;
-                [self.view addSubview:_imageView];
-            });
-        });
-         */
-
         //NSData *imageData = [NSData dataWithContentsOfURL:url];
         NSData * imageData = [[NSData alloc] initWithContentsOfURL: url];
         UIImage *image = [UIImage imageWithData:imageData];

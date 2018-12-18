@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		183AE04121C5DAED001AA32A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183AE04021C5DAED001AA32A /* DetailViewController.m */; };
+		183AE04421C863ED001AA32A /* Marvel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 183AE04221C863ED001AA32A /* Marvel.xcdatamodeld */; };
 		4E5852F01DB7CDCE0050AB37 /* MainCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5852EF1DB7CDCE0050AB37 /* MainCollectionViewController.m */; };
 		4E5852F31DB7CE100050AB37 /* MainCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5852F21DB7CE100050AB37 /* MainCollectionViewCell.m */; };
 		4EA9EE931DB7C90B000D2138 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA9EE921DB7C90B000D2138 /* main.m */; };
@@ -18,9 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0372A2D37FC1A85549571F3F /* libPods-UICollectionViewDataSourcePrefetchingObjCSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UICollectionViewDataSourcePrefetchingObjCSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		183AE03F21C5DAED001AA32A /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		183AE04021C5DAED001AA32A /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		183AE04321C863ED001AA32A /* Marvel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Marvel.xcdatamodel; sourceTree = "<group>"; };
 		4E5852EE1DB7CDCE0050AB37 /* MainCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCollectionViewController.h; sourceTree = "<group>"; };
 		4E5852EF1DB7CDCE0050AB37 /* MainCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCollectionViewController.m; sourceTree = "<group>"; };
 		4E5852F11DB7CE100050AB37 /* MainCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCollectionViewCell.h; sourceTree = "<group>"; };
@@ -33,8 +34,6 @@
 		4EA9EE9D1DB7C90B000D2138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EA9EEA01DB7C90B000D2138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EA9EEA21DB7C90B000D2138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		95B2D40891813DBA81103D14 /* Pods-UICollectionViewDataSourcePrefetchingObjCSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICollectionViewDataSourcePrefetchingObjCSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UICollectionViewDataSourcePrefetchingObjCSample/Pods-UICollectionViewDataSourcePrefetchingObjCSample.debug.xcconfig"; sourceTree = "<group>"; };
-		CF699DF777EA6C18D5317867 /* Pods-UICollectionViewDataSourcePrefetchingObjCSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICollectionViewDataSourcePrefetchingObjCSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-UICollectionViewDataSourcePrefetchingObjCSample/Pods-UICollectionViewDataSourcePrefetchingObjCSample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,15 +47,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		134815D8683F6B2A6C3D109D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				95B2D40891813DBA81103D14 /* Pods-UICollectionViewDataSourcePrefetchingObjCSample.debug.xcconfig */,
-				CF699DF777EA6C18D5317867 /* Pods-UICollectionViewDataSourcePrefetchingObjCSample.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		4E5852EB1DB7CD420050AB37 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,7 +80,6 @@
 			children = (
 				4EA9EE901DB7C90B000D2138 /* MarvelAssign */,
 				4EA9EE8F1DB7C90B000D2138 /* Products */,
-				134815D8683F6B2A6C3D109D /* Pods */,
 				B816F8DE381E7540A1AC2342 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -115,6 +104,7 @@
 				4EA9EE9F1DB7C90B000D2138 /* LaunchScreen.storyboard */,
 				4EA9EEA21DB7C90B000D2138 /* Info.plist */,
 				4EA9EE911DB7C90B000D2138 /* Supporting Files */,
+				183AE04221C863ED001AA32A /* Marvel.xcdatamodeld */,
 			);
 			path = MarvelAssign;
 			sourceTree = "<group>";
@@ -130,7 +120,6 @@
 		B816F8DE381E7540A1AC2342 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0372A2D37FC1A85549571F3F /* libPods-UICollectionViewDataSourcePrefetchingObjCSample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,7 +131,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4EA9EEA51DB7C90B000D2138 /* Build configuration list for PBXNativeTarget "MarvelAssign" */;
 			buildPhases = (
-				B862184A3B464DCE2EB425D7 /* [CP] Check Pods Manifest.lock */,
 				4EA9EE8A1DB7C90B000D2138 /* Sources */,
 				4EA9EE8B1DB7C90B000D2138 /* Frameworks */,
 				4EA9EE8C1DB7C90B000D2138 /* Resources */,
@@ -203,36 +191,12 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		B862184A3B464DCE2EB425D7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UICollectionViewDataSourcePrefetchingObjCSample-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		4EA9EE8A1DB7C90B000D2138 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183AE04421C863ED001AA32A /* Marvel.xcdatamodeld in Sources */,
 				183AE04121C5DAED001AA32A /* DetailViewController.m in Sources */,
 				4EA9EE961DB7C90B000D2138 /* AppDelegate.m in Sources */,
 				4EA9EE931DB7C90B000D2138 /* main.m in Sources */,
@@ -355,27 +319,29 @@
 		};
 		4EA9EEA61DB7C90B000D2138 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95B2D40891813DBA81103D14 /* Pods-UICollectionViewDataSourcePrefetchingObjCSample.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 99DFUACH93;
 				INFOPLIST_FILE = MarvelAssign/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mm.MarvelAssign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		4EA9EEA71DB7C90B000D2138 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF699DF777EA6C18D5317867 /* Pods-UICollectionViewDataSourcePrefetchingObjCSample.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 99DFUACH93;
 				INFOPLIST_FILE = MarvelAssign/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mm.MarvelAssign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -401,6 +367,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		183AE04221C863ED001AA32A /* Marvel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				183AE04321C863ED001AA32A /* Marvel.xcdatamodel */,
+			);
+			currentVersion = 183AE04321C863ED001AA32A /* Marvel.xcdatamodel */;
+			path = Marvel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4EA9EE861DB7C90B000D2138 /* Project object */;
 }

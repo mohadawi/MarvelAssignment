@@ -113,53 +113,6 @@
             endingLineNumber = "361"
             landmarkName = "-executeDownloadImageOperationBlockForIndexPath:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__79-[MainCollectionViewController executeDownloadImageOperationBlockForIndexPath:]_block_invoke"
-                  moduleName = "UICollectionViewDataSourcePrefetchingObjCSample"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Downloads/iOS-10-Sampler-master/UICollectionViewDataSourcePrefetching/UICollectionViewDataSourcePrefetchingObjCSample/UICollectionViewDataSourcePrefetchingObjCSample/MainCollectionViewController.m"
-                  timestampString = "566696007.636773"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "360"
-                  endingLineNumber = "360"
-                  offsetFromSymbolStart = "636">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__79-[MainCollectionViewController executeDownloadImageOperationBlockForIndexPath:]_block_invoke_2"
-                  moduleName = "UICollectionViewDataSourcePrefetchingObjCSample"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Downloads/iOS-10-Sampler-master/UICollectionViewDataSourcePrefetching/UICollectionViewDataSourcePrefetchingObjCSample/UICollectionViewDataSourcePrefetchingObjCSample/MainCollectionViewController.m"
-                  timestampString = "566696007.639192"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "360"
-                  endingLineNumber = "360"
-                  offsetFromSymbolStart = "15">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.229"
-                  moduleName = "UICollectionViewDataSourcePrefetchingObjCSample"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Downloads/iOS-10-Sampler-master/UICollectionViewDataSourcePrefetching/UICollectionViewDataSourcePrefetchingObjCSample/UICollectionViewDataSourcePrefetchingObjCSample/MainCollectionViewController.m"
-                  timestampString = "566696007.641799"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "360"
-                  endingLineNumber = "360"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -175,6 +128,102 @@
             startingLineNumber = "274"
             endingLineNumber = "274"
             landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MarvelAssign/MainCollectionViewController.m"
+            timestampString = "566795304.86033"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-getRequestAPICall:hash:ts:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MarvelAssign/MainCollectionViewController.m"
+            timestampString = "566795304.860432"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "MainCollectionViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MarvelAssign/MainCollectionViewController.m"
+            timestampString = "566795304.860512"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "-saveCharacters:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MarvelAssign/MainCollectionViewController.m"
+            timestampString = "566795304.860585"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "-saveCharacters:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MarvelAssign/MainCollectionViewController.m"
+            timestampString = "566795304.860656"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-checkDuplicateCharacters:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MarvelAssign/MainCollectionViewController.m"
+            timestampString = "566795304.860725"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-checkDuplicateCharacters:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

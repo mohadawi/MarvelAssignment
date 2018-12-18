@@ -5,6 +5,7 @@
 //  Created by Apple on 12/16/18.
 //  Copyright © 2018 Mentormate. All rights reserved.
 //
+//Mohammad Dawi on 12/18/2018
 
 #import "DetailViewController.h"
 
@@ -29,11 +30,8 @@
     activityView.tag = 100;
     [self.view addSubview:activityView];
     NSURL *nsurl=[NSURL URLWithString:_wiki];
-    
     NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
-    //dispatch_async(dispatch_get_main_queue(), ^{
-        [_wv loadRequest:nsrequest];
-    //});
+    [_wv loadRequest:nsrequest];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
